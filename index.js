@@ -4,7 +4,7 @@ const path = require('path');
 const { url } = require('inspector');
 
 const server = http.createServer((req, res) => {
-    let filepath = path.join(__dirname, 'public', req.url === '/' ? 'index.html' : req.url)
+    let filepath = path.join(__dirname, req.url === '/' ? 'index.html' : req.url)
     let contentType = getContentType(filepath) || 'text/html';
     let emptyPath = path.join(__dirname, 'public', '404.html');
     fs.readFile(filepath, 'utf8', (err, content) => {
